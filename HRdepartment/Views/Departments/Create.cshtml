@@ -1,0 +1,41 @@
+﻿@model HRdepartment.Models.Department
+
+@{
+    ViewData["Title"] = "Создание отдела";
+}
+
+<h4>Отделы</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Department_Title" class="control-label">Название отдела</label>
+                <input asp-for="Department_Title" class="form-control" />
+                <span asp-validation-for="Department_Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Number_Phone" class="control-label">Номер телефона отдела</label>
+                <input asp-for="Number_Phone" class="form-control" />
+                <span asp-validation-for="Number_Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Head_Department" class="control-label">Начальник отдела</label>
+                <input asp-for="Head_Department" class="form-control" />
+                <span asp-validation-for="Head_Department" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

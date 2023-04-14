@@ -1,0 +1,41 @@
+﻿@model IEnumerable<HRdepartment.Models.Post>
+
+@{
+    ViewData["Title"] = "Должности";
+}
+
+<p>
+    <a asp-action="Create">Создать должность</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Название должности
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Post)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title_Post)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id_Post" style="color: #1a4e87">Редактирование</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id_Post" style="color: #1a4e87">Детали</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id_Post" style="color: #e84545">Удаление</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

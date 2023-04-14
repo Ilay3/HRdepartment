@@ -1,0 +1,49 @@
+﻿@model HRdepartment.Models.Department
+
+@{
+    ViewData["Title"] = "Детали отдела";
+}
+
+@if (Model.ApplicationUser.Any())
+{
+    <h4>Список сотрудников @Model.Department_Title:</h4>
+    <hr/>
+    <table>
+        <tr>
+            <th scope="col" style="padding-right: 100px">Имя</th>
+            <th scope="col" style="padding-right: 100px">Фамилия</th>
+            <th scope="col" style="padding-right: 100px">Отчетсво</th>
+            <th scope="col" style="padding-right: 100px">Телефон</th>
+            <th scope="col">Email</th>
+        </tr>
+        @foreach (var player in Model.ApplicationUser)
+        {
+            <tr scope="row">
+                <td style="padding-right: 100px">
+                    @player.FirstName
+                </td>
+                <td style="padding-right: 100px">
+                    @player.LastName
+                </td>
+                <td style="padding-right: 100px">
+                    @player.Patronymic
+                </td>
+                <td style="padding-right: 100px">
+                    @player.PhoneNumber
+                </td>
+                <td>
+                    @player.Email
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <h4>Список пуст</h4>
+}
+
+
+<div>
+    <a asp-action="Index">Вернуться назад</a>
+</div>

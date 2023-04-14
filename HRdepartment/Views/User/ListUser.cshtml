@@ -1,0 +1,70 @@
+﻿@using HRdepartment.Controllers;
+@model IEnumerable<ApplicationUser>
+@{
+    ViewBag.Title = "Сотрудники";
+
+}
+<hr />
+
+
+<form class="form-inline" style="padding-top: 20px; display: block;" method="get">
+    <div class="input-group mb-3" style="margin-right: 10px;">
+        <input type="text" name="searchString" class="form-control input-lg" placeholder="Поиск">
+        <div class="input-group-append">
+            <button style="color: #ffffff; margin-top: 0px;" class="btn btn-dark px-auto" type="submit">Поиск</button>
+        </div>
+    </div>
+</form>
+
+@if (Model.Any())   
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    ФИО Сотрудника
+                </th>
+                <th>
+                     Отдел
+                </th>
+                <th>
+                     Должность
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Enumerable.Reverse(Model))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName) @Html.DisplayFor(modelItem => item.Patronymic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.Department_Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Post.Title_Post)
+                    </td>
+                    <td style="display: flex; justify-content: end;">
+                        <form asp-action="DeleteUser" asp-route-id="@item.Id" method="post">
+                            <a asp-action="EditUser" asp-route-id="@item.Id" class="btn btn-outline-primary mb-1">Редактирование</a>
+
+                            <button type="submit" class="btn btn-outline-danger mb-1"
+                                    onclick="return confirm('Вы уверены что хотите удалить информацию о посещении?')">
+                                Удаление
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+}
+else
+{
+<h1>У вас не кто не работает</h1>
+}

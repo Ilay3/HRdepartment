@@ -1,0 +1,111 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    .gradient-custom-3 {
+        /* fallback for old browsers */
+        background: #F37335;
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+    }
+
+    .gradient-custom-4 {
+        /* fallback for old browsers */
+        background: #F37335;
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right, #FDC830, #F37335);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right, #FDC830, #F37335);
+    }
+</style>
+
+<section class="">
+    <div class="mask d-flex align-items-center">
+        <div class="container mt-3">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5 ">
+                            <h4 class="text-uppercase text-center mb-4">Регистрация</h4>
+
+                            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+                                <div class="form-outline mb-4">
+                                    <input asp-for="Input.FirstName" type="text" placeholder="Имя" class="form-control form-control-md" />
+                                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input asp-for="Input.LastName" type="text" placeholder="Фамилия" class="form-control form-control-md" />
+                                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input asp-for="Input.Patronymic" type="text" placeholder="Отчество" class="form-control form-control-md" />
+                                    <span asp-validation-for="Input.Patronymic" class="text-danger"></span>
+
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input asp-for="Input.PhoneNumber" type="number" placeholder="Номер телефона" class="form-control form-control-md" />
+                                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input asp-for="Input.Adress" type="text" placeholder="Адрес" class="form-control form-control-md" />
+                                    <span asp-validation-for="Input.Adress" class="text-danger"></span>
+
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input asp-for="Input.Email" type="email" placeholder="Email" class="form-control form-control-md" />
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input asp-for="Input.Password" type="password" placeholder="Пароль" class="form-control form-control-md" />
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input asp-for="Input.ConfirmPassword" type="password" placeholder="Повторите пароль" class="form-control form-control-md" />
+                                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+
+                                </div>
+
+
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit"
+                                            class="btn btn-success btn-block btn-md gradient-custom-4 text-body">
+                                        Регистрация
+                                    </button>
+                                </div>
+
+                                <p class="text-center text-muted mt-4 mb-0">
+                                    Уже есть аккаунт?
+                                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" class="fw-bold text-body"><u>Авторизоваться</u></a>
+                                </p>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

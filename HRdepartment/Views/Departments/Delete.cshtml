@@ -1,0 +1,38 @@
+﻿@model HRdepartment.Models.Department
+
+@{
+    ViewData["Title"] = "Удаление отдела";
+}
+
+
+<h3>Вы действительно хотите удалить отдел?</h3>
+<div>
+    <h4>@Model.Department_Title</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Отдел
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Department_Title)
+        </dd>
+        <dt class = "col-sm-2">
+            Телефон
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Number_Phone)
+        </dd>
+        <dt class = "col-sm-2">
+            Начальник
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Head_Department)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Department_Id" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">Вернуться назад</a>
+    </form>
+</div>

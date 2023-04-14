@@ -1,0 +1,130 @@
+﻿@using HRdepartment.Controllers
+@model HRdepartment.Models.EditUserViewModel
+
+@{
+    ViewBag.Title = "Редактирования сотрудника";
+
+    var z = ViewData["Department"];
+    var h = ViewData["Post"];
+
+}
+
+
+<form asp-action="EditUser" asp-controller="User" asp-route-Id="@Model.Id">
+
+        <div class="card-3d-wrap mx-auto">
+            <div class="card-front">
+
+                <div class="form-group">
+                    <label asp-for="@Model.FirstName" class="control-label">Имя</label>
+                    <input type="text" asp-for="@Model.FirstName" class="form-control" />
+                    <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.LastName" class="control-label">Фамилия</label>
+                <input type="text" asp-for="@Model.LastName" class="form-control" />
+                    <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Patronymic" class="control-label">Отчество</label>
+                    <input type="text" asp-for="@Model.Patronymic" class="form-control" />
+                    <span asp-validation-for="@Model.Patronymic" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Adress" class="control-label">Адрес проживания</label>
+                <input type="text" asp-for="@Model.Adress" class="form-control" />
+                    <span asp-validation-for="@Model.Adress" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.NumberPhone" class="control-label">Номер телефона</label>
+                <input type="number" asp-for="@Model.NumberPhone" class="form-control" />
+                <span asp-validation-for="@Model.NumberPhone" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Date_birth" class="control-label">Дата рождения</label>
+                <input type="date" asp-for="@Model.Date_birth" class="form-control" />
+                    <span asp-validation-for="@Model.Date_birth" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Passport_number" class="control-label">Номер паспорта</label>
+                <input type="number" asp-for="@Model.Passport_number" class="form-control" />
+                    <span asp-validation-for="@Model.Passport_number" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Passport_series" class="control-label">Серия паспорта</label>
+                <input type="number" asp-for="@Model.Passport_series" class="form-control" />
+                    <span asp-validation-for="@Model.Passport_series" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Education" class="control-label">Образование</label>
+                <input type="text" asp-for="@Model.Education" class="form-control" />
+                    <span asp-validation-for="@Model.Education" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Rank" class="control-label">Звание</label>
+                <input type="text" asp-for="@Model.Rank" class="form-control" />
+                    <span asp-validation-for="@Model.Rank" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.Driver_license" class="control-label">Водительское удостоверение</label>
+                <select class="form-control" asp-for="@Model.Driver_license" id="halls-dropdown">
+                        <option>Есть</option>
+                        <option>Отсутствует</option>
+                    </select>
+                    <span asp-validation-for="@Model.Driver_license" class="text-danger"></span>
+                </div>
+
+                <div class="center-wrap">
+
+
+                    <div>
+                        <label asp-for="@Model.Id_Post" class="control-label">Должность</label>
+                    <select class="form-control" asp-for="@Model.Id_Post" id="halls-dropdown">
+                            <option value="">Выберите долнжость</option>
+                            @if (h != null)
+                            {
+                                @foreach (var item in (List<UserController.SelectOptions>)h)
+                                {
+                                    <option value="@item.value">@item.text</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="@Model.Id_Post" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="@Model.Department_Id" class="control-label">Отел</label>
+                    <select class="form-control" asp-for="@Model.Department_Id" id="computers-dropdown">
+                            <option value="">Выберите отдел</option>
+                            @if (z != null)
+                            {
+                                @foreach (var item in (List<UserController.SelectOptions>)z)
+                                {
+                                    <option value="@item.value">@item.text</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <hr class="mb-3"/>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Создать</button>
+        <a asp-action="ListUser" class="btn btn-outline-secondary">Отмена</a>
+    </form>
+
+
+
+
+@section scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+}
+

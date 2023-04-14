@@ -1,0 +1,22 @@
+﻿@model HRdepartment.Models.Post
+
+@{
+    ViewData["Title"] = "Детали должности";
+}
+
+<div>
+    <h4>@Model.Title_Post</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Название должности
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title_Post)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id_Post">Редактирование</a> |
+    <a asp-action="Index">Вернуться назад</a>
+</div>
