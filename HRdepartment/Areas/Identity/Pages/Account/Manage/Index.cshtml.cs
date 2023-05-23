@@ -26,10 +26,8 @@ namespace HRdepartment.Areas.Identity.Pages.Account.Manage
         }
 
         public string Username { get; set; }
-
         [TempData]
         public string StatusMessage { get; set; }
-
         [BindProperty]
         public InputModel Input { get; set; }
 
@@ -72,10 +70,6 @@ namespace HRdepartment.Areas.Identity.Pages.Account.Manage
                 ProfilePicture = profilePicture
             };
         }
-
-
-
-
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -116,8 +110,7 @@ namespace HRdepartment.Areas.Identity.Pages.Account.Manage
             var lastName = user.LastName;
             var patronymic = user.Patronymic;
             var adress = user.Adress;
-      
-
+            
             if (Input.FirstName != firstName)
             {
                 user.FirstName = Input.FirstName;
@@ -130,7 +123,6 @@ namespace HRdepartment.Areas.Identity.Pages.Account.Manage
             }
             if (Input.Patronymic != patronymic)
             {
-
                 user.Patronymic = Input.Patronymic;
                 await _userManager.UpdateAsync(user);
             }
@@ -139,8 +131,6 @@ namespace HRdepartment.Areas.Identity.Pages.Account.Manage
                 user.Adress = Input.Adress;
                 await _userManager.UpdateAsync(user);
             }
-
-
             if (Request.Form.Files.Count > 0)
             {
                 IFormFile file = Request.Form.Files.FirstOrDefault();
